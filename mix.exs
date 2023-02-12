@@ -33,6 +33,9 @@ defmodule TraderX.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.0-rc.2", override: true},
+      {:ex_binance, github: "vasspilka/ex_binance", branch: "vs/trade_endpoints"},
+      {:decimal, "~> 2.0"},
+      {:statistics, "~> 0.6.2"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},

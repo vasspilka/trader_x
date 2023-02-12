@@ -32,3 +32,4 @@ trader_x-*.tar
 npm-debug.log
 /assets/node_modules/
 
+.envrc
