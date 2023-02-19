@@ -32,25 +32,26 @@ defmodule TraderX.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.0-rc.2", override: true},
-      {:ex_binance, github: "vasspilka/ex_binance", branch: "vs/trade_endpoints"},
       {:decimal, "~> 2.0"},
-      {:statistics, "~> 0.6.2"},
-      {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
-      {:postgrex, ">= 0.0.0"},
+      {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
+      {:ex_binance, github: "vasspilka/ex_binance", branch: "vs/trade_endpoints"},
+      {:floki, ">= 0.30.0", only: :test},
+      {:heroicons, "~> 0.5"},
+      {:jason, "~> 1.2"},
+      {:phoenix, "~> 1.7.0-rc.2", override: true},
+      {:phoenix_ecto, "~> 4.4"},
       {:phoenix_html, "~> 3.0"},
+      {:phoenix_live_dashboard, "~> 0.7.2"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.18.3"},
-      {:heroicons, "~> 0.5"},
-      {:floki, ">= 0.30.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.7.2"},
-      {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
+      {:plug_cowboy, "~> 2.5"},
+      {:postgrex, ">= 0.0.0"},
+      {:statistics, "~> 0.6.2"},
       {:tailwind, "~> 0.1.8", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:typed_struct, "~> 0.3.0"}
     ]
   end
 
