@@ -1,0 +1,14 @@
+<.simple_form :let={f} for={@form} phx-submit="analyze">
+  <.input field={{f, :symbol}} label="Symbol" type="select" options={@symbols} />
+  <.input field={{f, :period}} label="Time Period" value="1w" />
+  <:actions>
+    <.button>Analyze</.button>
+  </:actions>
+</.simple_form>
+
+
+
+
+<%= if @data do %>
+    <.analysis_overview data={@data} />
+<% end %>

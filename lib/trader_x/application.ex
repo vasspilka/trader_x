@@ -16,7 +16,7 @@ defmodule TraderX.Application do
       {Phoenix.PubSub, name: TraderX.PubSub},
       # Start the Endpoint (http/https)
       TraderXWeb.Endpoint,
-      TradeX.Symbols
+      TraderX.Symbols
       # Start a worker by calling: TraderX.Worker.start_link(arg)
       # {TraderX.Worker, arg}
     ]

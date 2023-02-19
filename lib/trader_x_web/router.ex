@@ -18,6 +18,8 @@ defmodule TraderXWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/analyze", ChartLive.Analyze, :index
   end
 
   # Other scopes may use custom stacks.

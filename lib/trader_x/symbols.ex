@@ -1,4 +1,4 @@
-defmodule TradeX.Symbols do
+defmodule TraderX.Symbols do
   use Agent
 
   @spec start_link(any) :: {:error, any} | {:ok, pid}

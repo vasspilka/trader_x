@@ -5,6 +5,7 @@ defmodule TraderX.Analytics do
   alias TraderX.Formulas
 
   typedstruct module: Overview do
+    field :symbol, binary()
     field :max_high, float()
     field :min_low, float()
     field :median, float()
@@ -14,8 +15,8 @@ defmodule TraderX.Analytics do
   end
 
   @doc "This function retuns a percentage of the stability of a symbol based on candles"
-  def overview(pair, period) do
-    {:ok, candles} = Data.candles(pair, period)
+  def overview(symbol, period) do
+    {:ok, candles} = Data.candles(symbol, period)
 
     open_close_stability =
       candles
@@ -48,6 +49,7 @@ defmodule TraderX.Analytics do
       |> Statistics.mean()
 
     %__MODULE__.Overview{
+      symbol: symbol,
       max_high: max_high,
       min_low: min_low,
       median: med_avg,
