@@ -17,7 +17,9 @@ defmodule TraderX.Application do
       # Start the Endpoint (http/https)
       TraderXWeb.Endpoint,
       TraderX.Symbols,
-      TraderX.Data.BinnanceBroker
+      TraderX.Data.BinnanceBroker,
+      TraderX.Data.OverviewStorage
+
       # Start a worker by calling: TraderX.Worker.start_link(arg)
       # {TraderX.Worker, arg}
     ]

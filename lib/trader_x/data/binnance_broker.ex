@@ -10,10 +10,10 @@ defmodule TraderX.Data.BinnanceBroker do
   end
 
   @impl true
-  def init(stack) do
+  def init(state) do
     refresh_weight()
 
-    {:ok, stack}
+    {:ok, state}
   end
 
   def do_request(api_call, weight) do
@@ -21,7 +21,6 @@ defmodule TraderX.Data.BinnanceBroker do
     |> GenServer.call({:do_request, %{weight: weight, api_call: api_call}})
     |> case do
       {:ok, result} ->
-        IO.inspect("Returning result")
         result
 
       {:error, :need_more_weight} ->
@@ -49,7 +48,6 @@ defmodule TraderX.Data.BinnanceBroker do
 
   @impl true
   def handle_info(:reset, _state) do
-    IO.inspect("Resetting")
     refresh_weight()
 
     {:noreply, @initial_state}

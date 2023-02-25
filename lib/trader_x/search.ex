@@ -3,7 +3,7 @@ defmodule TraderX.Search do
     TraderX.Symbols.get_all()
     |> Enum.map(fn symbol ->
       TraderX.Data.BinnanceBroker.do_request(
-        fn -> TraderX.Analytics.overview(symbol, "1w") end,
+        fn -> TraderX.Analytics.overview(symbol, "1d") end,
         1
       )
     end)

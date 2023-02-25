@@ -18,6 +18,10 @@ defmodule TraderX.Analytics do
   def overview(symbol, period) do
     {:ok, candles} = Data.candles(symbol, period)
 
+    overview(candles)
+  end
+
+  def overview(candles) do
     open_close_stability =
       candles
       |> Enum.map(&Formulas.stability(&1.high, &1.low))
@@ -49,7 +53,6 @@ defmodule TraderX.Analytics do
       |> Statistics.mean()
 
     %__MODULE__.Overview{
-      symbol: symbol,
       max_high: max_high,
       min_low: min_low,
       median: med_avg,
