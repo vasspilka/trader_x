@@ -7,21 +7,19 @@ defmodule TraderX.Analytics do
   typedstruct module: Overview do
     field :symbol, binary()
     field :max_high, float()
+    field :current_price, float()
     field :min_low, float()
     field :median, float()
     field :volatility, float()
     field :open_close_stability, float()
     field :overall_stability, float()
+    field :candles_count, integer()
   end
 
   @doc "This function retuns a percentage of the stability of a symbol based on candles"
   def overview(symbol, period) do
     {:ok, candles} = Data.candles(symbol, period)
 
-    overview(candles)
-  end
-
-  def overview(candles) do
     open_close_stability =
       candles
       |> Enum.map(&Formulas.stability(&1.high, &1.low))
@@ -53,12 +51,15 @@ defmodule TraderX.Analytics do
       |> Statistics.mean()
 
     %__MODULE__.Overview{
+      symbol: symbol,
       max_high: max_high,
       min_low: min_low,
       median: med_avg,
+      current_price: 0,
       volatility: Formulas.volatility(high_and_low),
       open_close_stability: open_close_stability,
-      overall_stability: overall_stability
+      overall_stability: overall_stability,
+      candles_count: Enum.count(candles)
     }
   end
 end

@@ -72,6 +72,11 @@ defmodule TraderX.Data.OverviewStorage do
     {:noreply, state}
   end
 
+  @impl true
+  def handle_info(:handle_next, state) do
+    {:noreply, state}
+  end
+
   defp fetch_next() do
     Process.send(self(), :handle_next, [])
   end
