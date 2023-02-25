@@ -29,4 +29,11 @@ defmodule TraderX.Data do
       {:ok, data}
     end
   end
+
+  def get_all_candles() do
+    TraderX.Symbols.get_all()
+    |> Enum.map(fn symbol ->
+      TraderX.Data.BinnanceBroker.do_request(fn -> candles(symbol, "1d") end, 1)
+    end)
+  end
 end

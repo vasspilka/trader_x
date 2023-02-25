@@ -16,8 +16,6 @@ defmodule TraderXWeb.Components.AppComponents do
   attr :data, :map, required: true
 
   def analysis_overview(assigns) do
-    IO.inspect(assigns)
-
     ~H"""
     <div class="flex flex-col">
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
