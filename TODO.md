@@ -38,3 +38,11 @@ We would have 2 options for this.
 
 
 ### Search symbol pairs based on overview.
+
+
+At the moment we don't have any good analysis of the data we get from candles.
+We currently use the Overview in the analysis module to run some calculations but they are not very valuable and can't be used to find interesting oportunities.
+
+We want to find formulas commonly used in technical analysis that we can calcualte and include in the overview for our search.
+
+Such formulas might be things like MACD, SMA
