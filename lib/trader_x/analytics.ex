@@ -20,6 +20,8 @@ defmodule TraderX.Analytics do
   def overview(symbol, period) do
     {:ok, candles} = Data.candles(symbol, period)
 
+    current_price = candles |> Enum.at(-1) |> Map.get(:close)
+
     open_close_stability =
       candles
       |> Enum.map(&Formulas.stability(&1.high, &1.low))
@@ -55,7 +57,7 @@ defmodule TraderX.Analytics do
       max_high: max_high,
       min_low: min_low,
       median: med_avg,
-      current_price: 0,
+      current_price: current_price,
       volatility: Formulas.volatility(high_and_low),
       open_close_stability: open_close_stability,
       overall_stability: overall_stability,

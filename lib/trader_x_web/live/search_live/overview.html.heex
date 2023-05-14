@@ -1,0 +1,35 @@
+<.simple_form :let={f} for={@form} phx-submit="search" phx-change="update">
+  <.input
+    field={{f, :condition_type}}
+    label="Condition Type"
+    type="select"
+    options={["field_to_field", "field_to_custom"]}
+    }
+  />
+  <.input field={{f, :field_a}} label="Field 1" type="select" options={@fields} />
+  <.input field={{f, :operator}} label="Operator" type="select" options={@operators} />
+  <.input
+    :if={@condition_type == "field_to_field"}
+    field={{f, :field_b}}
+    label="Field 2"
+    type="select"
+    options={@fields}
+  />
+  <.input
+    :if={@condition_type == "field_to_custom"}
+    field={{f, :value}}
+    label="Value"
+    type="number"
+    step="0.00001"
+    }
+  />
+  <:actions>
+    <.button>Search</.button>
+  </:actions>
+</.simple_form>
+
+<ul id="search-results">
+  <li :for={{id, overview} <- @search_results}>
+    <.analysis_overview data={overview} />
+  </li>
+</ul>

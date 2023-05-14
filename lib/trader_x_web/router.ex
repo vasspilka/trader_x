@@ -20,7 +20,7 @@ defmodule TraderXWeb.Router do
     get "/", PageController, :home
 
     live "/analyze", ChartLive.Analyze, :index
-    # live "/search", Search.Overview, :index
+    live "/search", SearchLive.Overview, :index
   end
 
   # Other scopes may use custom stacks.

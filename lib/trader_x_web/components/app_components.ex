@@ -4,7 +4,7 @@ defmodule TraderXWeb.Components.AppComponents do
   """
   use Phoenix.Component
 
-  alias Phoenix.LiveView.JS
+  # alias Phoenix.LiveView.JS
 
   @doc ~S"""
   Renders an overview table.
